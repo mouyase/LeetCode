@@ -38,23 +38,16 @@ class ListNode {
 
 class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode listNode;
-        ListNode tl1 = l1, tl2 = l2;
+        ListNode listNode = new ListNode(0), tempNode = new ListNode(0), templ1 = l1, templ2 = l2;
         while (true) {
-            int tmpData;
-            tmpData = tl1.val + tl2.val;
-            if (tmpData >= 10) {
-                listNode = new ListNode(tmpData - 10);
-            } else {
-                listNode = new ListNode(tmpData);
+            int tempVal = l1.val + l2.val;
+            if (tempVal >= 10) {
+                tempVal = tempVal - 10;
+                tempNode = new ListNode(1);
             }
-            if (tl1.next != null && tl2.next != null) {
-                tl1 = tl1.next;
-                tl2 = tl2.next;
-            }
-            if (tl1.next == null && tl2.next == null) {
-                break;
-            }
+            listNode.val = tempVal;
+            listNode.next = tempNode;
+            break;
         }
         return listNode;
     }
